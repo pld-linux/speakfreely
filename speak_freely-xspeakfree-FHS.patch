@@ -1,0 +1,11 @@
+diff -durN speak_freely-7.5.orig1/CONTRIB/xspeakfree-0.8.1.b/bin/xspeakfree speak_freely-7.5/CONTRIB/xspeakfree-0.8.1.b/bin/xspeakfree
+--- speak_freely-7.5.orig1/CONTRIB/xspeakfree-0.8.1.b/bin/xspeakfree	Mon Nov  1 03:26:45 1999
++++ speak_freely-7.5/CONTRIB/xspeakfree-0.8.1.b/bin/xspeakfree	Tue Dec  3 08:47:26 2002
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-LIB=`dirname $0`/../lib/xspeakfree
++LIB=`dirname $0`/../share/xspeakfree
+ 
+ wish "$LIB/xspeakfree.tcl" -- "$@" &
+ trap "/bin/sh -c \"kill $!
