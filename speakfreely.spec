@@ -1,4 +1,3 @@
-# TODO: use system libgsm and lpc10
 %define		ver 7.5
 %define		xspeakfreely_ver 0.8.1.b
 Summary:	Speak Freely - network voice phone
@@ -14,7 +13,9 @@ Source0:	http://www.fourmilab.ch/speakfree/unix/speak_freely-%{version}.tar.gz
 Patch0:		speak_freely-Makefile.patch
 Patch1:		speak_freely-xspeakfree-FHS.patch
 Patch2:		speak_freely-xspeakfree-pidfiles.patch
+Patch3:		speak_freely-system-libgsm.patch
 URL:		http://www.fourmilab.ch/speakfree/unix/
+BuildRequires:	libgsm-devel >= 1.0.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -73,6 +74,7 @@ Ten pakiet zawiera oparty o Tk graficzny interfejs do Speak Freely.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__make} \
