@@ -2,7 +2,7 @@ Summary:	Speak Freely - network voice phone
 Summary(pl):	Speak Freely - internetowy telefon
 Name:		speakfreely
 Version:	7.2
-Release:	2
+Release:	1
 License:	GPL
 Group:		Applications/Communications
 Group(pl):	Aplikacje/Komunikacja
