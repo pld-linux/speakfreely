@@ -1,4 +1,4 @@
-
+# TODO: use system libgsm and lpc10
 %define		ver 7.5
 %define		xspeakfreely_ver 0.8.1.b
 Summary:	Speak Freely - network voice phone
@@ -16,10 +16,6 @@ Patch1:		speak_freely-xspeakfree-FHS.patch
 Patch2:		speak_freely-xspeakfree-pidfiles.patch
 URL:		http://www.fourmilab.ch/speakfree/unix/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_xprefix	/usr/X11R6
-%define		_xbindir	%{_xprefix}/bin
-%define		_xdatadir	%{_xprefix}/share
 
 %description
 Speak Freely is a application for a variety of Unix workstations that
@@ -81,6 +77,8 @@ Ten pakiet zawiera oparty o Tk graficzny interfejs do Speak Freely.
 %build
 %{__make} \
 	INSTDIR=%{_prefix} \
+	CC="%{__cc}" \
+	DEBUG="%{rpmcflags} -Wall -DHEXDUMP" \
 %ifarch ppc sparc sparc64 sparcv9
 	ENDIAN="BIG"
 %else
@@ -94,9 +92,9 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 %{__make} install \
 	INSTDIR="$RPM_BUILD_ROOT%{_prefix}"
 
-install -d $RPM_BUILD_ROOT{%{_xbindir},%{_xdatadir}/xspeakfree}
-install CONTRIB/xspeakfree-0.8.1.b/bin/* $RPM_BUILD_ROOT%{_xbindir}
-install CONTRIB/xspeakfree-0.8.1.b/lib/xspeakfree/* $RPM_BUILD_ROOT%{_xdatadir}/xspeakfree
+install -d $RPM_BUILD_ROOT%{_datadir}/xspeakfree
+install CONTRIB/xspeakfree-0.8.1.b/bin/* $RPM_BUILD_ROOT%{_bindir}
+install CONTRIB/xspeakfree-0.8.1.b/lib/xspeakfree/* $RPM_BUILD_ROOT%{_datadir}/xspeakfree
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -104,12 +102,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README*
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/sf*
+%{_mandir}/man1/sf*.1*
 
 %files -n xspeakfree
 %defattr(644,root,root,755)
 %doc CONTRIB/xspeakfree-0.8.1.b/{BUGS,HISTORY,LICENSE,README,TODO}
 %doc CONTRIB/xspeakfree-0.8.1.b/xspeakfree-help.html
-%attr(755,root,root) %{_xbindir}/*
-%{_xdatadir}/xspeakfree*
+%attr(755,root,root) %{_bindir}/xspeakfree
+%{_datadir}/xspeakfree*
