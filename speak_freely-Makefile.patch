@@ -1,29 +1,43 @@
---- speak_freely-7.1/Makefile	Sat Sep 18 17:29:44 1999
-+++ speak_freely-7.1.new/Makefile	Thu Jan 13 14:15:21 2000
-@@ -12,7 +12,7 @@
- # Install program
- INSTALL = /usr/bin/install
- # Installation root directory
--INSTDIR = /usr/local
-+INSTDIR = /home/users/klakier/usr
+diff -durN speak_freely-7.5.orig/Makefile speak_freely-7.5/Makefile
+--- speak_freely-7.5.orig/Makefile	Fri Oct 19 16:01:35 2001
++++ speak_freely-7.5/Makefile	Tue Dec  3 08:32:10 2002
+@@ -17,7 +17,7 @@
  # Binaries
  INSTDIR_BIN = $(INSTDIR)/bin
  # Manual pages
-@@ -38,7 +38,7 @@
- #    functionality is working.	Please see the detailed description
+-INSTDIR_MAN = $(INSTDIR)/man
++INSTDIR_MAN = $(INSTDIR)/share/man
+ 
+ #   Uncomment the appropriate CC, CCFLAGS, and LFLAGS statements below
+ #   according to your machine type.  The CELPFLAGS variable allows you
+@@ -43,7 +43,8 @@
  #    of the available flags which follows these declarations.
  #
--CCFLAGS =  -DAUDIO_BLOCKING -DLINUX -DHALF_DUPLEX -DM_LITTLE_ENDIAN
-+CCFLAGS =  -DAUDIO_BLOCKING -DLINUX -DM_LITTLE_ENDIAN
- CC = gcc -O3 # for GNU's gcc compiler
- LFLAGS = -lncurses -lm
- #
-@@ -269,7 +269,7 @@
+ #CCFLAGS =  -DAUDIO_BLOCKING -DLINUX -DHALF_DUPLEX -DM_LITTLE_ENDIAN
+-CCFLAGS =  -DAUDIO_BLOCKING -DLINUX -DHALF_DUPLEX -DM_LITTLE_ENDIAN -DNEEDED_LINEAR -DLINUX_DSP_SMALL_BUFFER
++CCFLAGS =  -DAUDIO_BLOCKING -DLINUX -DM_$(ENDIAN)_ENDIAN -DNEEDED_LINEAR -DLINUX_DSP_SMALL_BUFFER
++
+ CC = gcc -Wall # for GNU's gcc compiler
+ #   CELPFLAGS below are tweaked for GCC 2.96 on Intel Pentium
+ #   Comment out if you are using a compiler which doesn't
+@@ -286,7 +287,7 @@
  
  #   Compiler flags
  
--CFLAGS = $(DEBUG) -Iadpcm -Ilpc -Igsm/inc -Imd5 -Iidea -Ilibdes -Iblowfish $(CARGS) $(DUPLEX) $(CCFLAGS) $(DOMAIN)
-+CFLAGS = $(DEBUG) -I/usr/include/ncurses -Iadpcm -Ilpc -Igsm/inc -Imd5 -Iidea -Ilibdes -Iblowfish $(CARGS) $(DUPLEX) $(CCFLAGS) $(DOMAIN)
+-CFLAGS = $(DEBUG) -Iadpcm -Icelp -Ilpc -Igsm/inc -Ilpc10 -Imd5 -Ides -Iidea -Ilibdes -Iblowfish $(CARGS) $(DUPLEX) $(CCFLAGS) $(DOMAIN)
++CFLAGS = $(DEBUG) -I/usr/include/ncurses -Iadpcm -Icelp -Ilpc -Igsm/inc -Ilpc10 -Imd5 -Ides -Iidea -Ilibdes -Iblowfish $(CARGS) $(DUPLEX) $(CCFLAGS) $(DOMAIN)
  
- PROGRAMS = sfspeaker sfmike sflaunch sflwld sflwl sfecho sfreflect sfvod
+ BINARIES = sfspeaker sfmike sflaunch sflwld sflwl sfecho sfreflect
  
+@@ -483,8 +484,8 @@
+ #	be root to install in system directories.
+ 
+ install: $(PROGRAMS)
+-	$(INSTALL) -o root -g root -m 755 -s $(BINARIES) $(INSTDIR_BIN)
+-	$(INSTALL) -o root -g root -m 755 $(SCRIPTS) $(INSTDIR_BIN)
+-	$(INSTALL) -o root -g root -m 644 *.1 $(INSTDIR_MAN)/man1
++	$(INSTALL) -m 755 -s $(BINARIES) $(INSTDIR_BIN)
++	$(INSTALL) -m 755 $(SCRIPTS) $(INSTDIR_BIN)
++	$(INSTALL) -m 644 *.1 $(INSTDIR_MAN)/man1
+ 
+ # DO NOT DELETE
