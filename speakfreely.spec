@@ -1,15 +1,24 @@
+
+%define		ver 7.5
+%define		xspeakfreely_ver 0.8.1.b
 Summary:	Speak Freely - network voice phone
 Summary(pl):	Speak Freely - internetowy telefon
 Summary(pt_BR):	Cliente para telefonia via Internet com suporte ao protocolo RTP
 Name:		speakfreely
-Version:	7.2
-Release:	2
+Version:	%{ver}
+Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://www.fourmilab.ch/speakfree/unix/speak_freely-%{version}.tar.gz
 Patch0:		speak_freely-Makefile.patch
+Patch1:		speak_freely-xspeakfree-FHS.patch
+Patch2:		speak_freely-xspeakfree-pidfiles.patch
 URL:		http://www.fourmilab.ch/speakfree/unix/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define _xprefix /usr/X11R6
+%define _xbindir %{_xprefix}/bin
+%define _xdatadir %{_xprefix}/share
 
 %description
 Speak Freely is a application for a variety of Unix workstations that
@@ -49,21 +58,41 @@ O Speak Freely permite que duas máquinas possam ser usadas para
 transmissão de voz sobre TCP/IP. Suporte compressão, criptografia e o
 protocolo RTP.
 
+%package -n xspeakfree
+Summary:	GUI to Speak Freely
+Summary(pl):	Graficzny interfejs u¿ytkownika dla Speak Freely
+Version:	%{xspeakfreely_ver}
+Group:		Applications/Communications
+Requires:	%{name} = %{ver}-%{release}
+
+%description -n xspeakfree
+This is Tk-based GUI for Speak Freely.
+
 %prep
-%setup -q -n speak_freely-%{version}
-%patch -p1
+%setup -q -n speak_freely-%{ver}
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
-%{__make}
+%{__make} \
+	INSTDIR=%{_prefix} \
+%ifarch ppc
+	ENDIAN="BIG"
+%else
+	ENDIAN="LITTLE"
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-install sfecho sflaunch sflwl sflwld sfmike sfreflect sfspeaker sfvod \
-	$RPM_BUILD_ROOT%{_bindir}
-install *.1 $RPM_BUILD_ROOT%{_mandir}/man1
+%{__make} install \
+	INSTDIR="$RPM_BUILD_ROOT%{_prefix}"
 
+install -d $RPM_BUILD_ROOT{%{_xbindir},%{_xdatadir}/xspeakfree}
+install CONTRIB/xspeakfree-0.8.1.b/bin/* $RPM_BUILD_ROOT%{_xbindir}
+install CONTRIB/xspeakfree-0.8.1.b/lib/xspeakfree/* $RPM_BUILD_ROOT%{_xdatadir}/xspeakfree
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,3 +102,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc README*
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
+
+%files -n xspeakfree
+%defattr(644,root,root,755)
+%doc CONTRIB/xspeakfree-0.8.1.b/{BUGS,HISTORY,LICENSE,README,TODO}
+%doc CONTRIB/xspeakfree-0.8.1.b/xspeakfree-help.html
+%attr(755,root,root) %{_xbindir}/*
+%{_xdatadir}/xspeakfree*
