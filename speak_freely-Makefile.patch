@@ -36,7 +36,7 @@ diff -durN speak_freely-7.5.orig/Makefile speak_freely-7.5/Makefile
 -	$(INSTALL) -o root -g root -m 755 -s $(BINARIES) $(INSTDIR_BIN)
 -	$(INSTALL) -o root -g root -m 755 $(SCRIPTS) $(INSTDIR_BIN)
 -	$(INSTALL) -o root -g root -m 644 *.1 $(INSTDIR_MAN)/man1
-+	$(INSTALL) -m 755 -s $(BINARIES) $(INSTDIR_BIN)
++	$(INSTALL) -m 755 $(BINARIES) $(INSTDIR_BIN)
 +	$(INSTALL) -m 755 $(SCRIPTS) $(INSTDIR_BIN)
 +	$(INSTALL) -m 644 *.1 $(INSTDIR_MAN)/man1
  
