@@ -8,7 +8,7 @@ Version:	%{ver}
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	http://www.fourmilab.ch/speakfree/unix/speak_freely-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/speak-freely-u/speak_freely-%{version}.tar.gz
 # Source0-md5:	fd315f8fd9996b7f34e83d8249ecd89f
 Patch0:		speak_freely-Makefile.patch
 Patch1:		speak_freely-xspeakfree-FHS.patch
