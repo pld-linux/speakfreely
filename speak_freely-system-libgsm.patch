@@ -1,0 +1,47 @@
+--- speak_freely-7.5/Makefile.orig	Mon Nov  3 12:07:00 2003
++++ speak_freely-7.5/Makefile	Mon Nov  3 12:08:18 2003
+@@ -287,7 +287,7 @@
+ 
+ #   Compiler flags
+ 
+-CFLAGS = $(DEBUG) -I/usr/include/ncurses -Iadpcm -Icelp -Ilpc -Igsm/inc -Ilpc10 -Imd5 -Ides -Iidea -Ilibdes -Iblowfish $(CARGS) $(DUPLEX) $(CCFLAGS) $(DOMAIN)
++CFLAGS = $(DEBUG) -I/usr/include/ncurses -Iadpcm -Icelp -Ilpc -Ilpc10 -Imd5 -Ides -Iidea -Ilibdes -Iblowfish $(CARGS) $(DUPLEX) $(CCFLAGS) $(DOMAIN)
+ 
+ BINARIES = sfspeaker sfmike sflaunch sflwld sflwl sfecho sfreflect
+ 
+@@ -295,19 +295,19 @@
+ 
+ PROGRAMS = $(BINARIES) $(SCRIPTS)
+ 
+-DIRS = adpcm blowfish celp des gsm idea libdes lpc lpc10 md5
++DIRS = adpcm blowfish celp des idea libdes lpc lpc10 md5
+ 
+ all:	$(PROGRAMS)
+ 
+ SPKROBJS = speaker.o codecs.o deskey.o g711.o rate.o rtpacket.o soundbyte.o ulaw.o usleep.o vatpkt.o vox.o audio_hp.o audio_sgi.o common.o
+ 
+-sfspeaker: $(SPKROBJS) adpcmlib.o celplib.o libblowfish.o lpclib.o lpc10lib.o gsmlib.o deslib.o md5lib.o idealib.o libdes.o xdsub.o 
+-	$(CC) $(SPKROBJS) adpcm/adpcm-u.o blowfish/libblowfish.a celp/celp.o des/des.a md5/md5.o idea/idea.a lpc10/liblpc10.a gsm/lib/libgsm.a lpc/lpc.o xdsub.o libdes/libdes.a $(LFLAGS) -o sfspeaker
++sfspeaker: $(SPKROBJS) adpcmlib.o celplib.o libblowfish.o lpclib.o lpc10lib.o deslib.o md5lib.o idealib.o libdes.o xdsub.o
++	$(CC) $(SPKROBJS) adpcm/adpcm-u.o blowfish/libblowfish.a celp/celp.o des/des.a md5/md5.o idea/idea.a lpc10/liblpc10.a -lgsm lpc/lpc.o xdsub.o libdes/libdes.a $(LFLAGS) -o sfspeaker
+ 
+ MIKEOBJS = mike.o codecs.o deskey.o g711.o rate.o rtpacket.o soundbyte.o ulaw.o usleep.o vatpkt.o xdsub.o audio_hp.o audio_sgi.o
+ 
+-sfmike: $(MIKEOBJS) adpcmlib.o celplib.o libblowfish.o lpclib.o lpc10lib.o gsmlib.o deslib.o md5lib.o idealib.o libdes.o
+-	$(CC) $(MIKEOBJS) adpcm/adpcm-u.o celp/celp.o des/des.a md5/md5.o idea/idea.a -lm blowfish/libblowfish.a lpc10/liblpc10.a gsm/lib/libgsm.a lpc/lpc.o libdes/libdes.a $(LFLAGS) -o sfmike
++sfmike: $(MIKEOBJS) adpcmlib.o celplib.o libblowfish.o lpclib.o lpc10lib.o deslib.o md5lib.o idealib.o libdes.o
++	$(CC) $(MIKEOBJS) adpcm/adpcm-u.o celp/celp.o des/des.a md5/md5.o idea/idea.a -lm blowfish/libblowfish.a lpc10/liblpc10.a -lgsm lpc/lpc.o libdes/libdes.a $(LFLAGS) -o sfmike
+ 
+ LAUNCHOBJS = launch.o soundbyte.o usleep.o g711.o
+ 
+@@ -430,8 +430,8 @@
+ 
+ speakfree.h:	audio_descr.h rtp.h rtpacket.h ulaw2linear.h types.h
+ 
+-testgsm:    testgsm.o gsmlib.o
+-	$(CC) testgsm.o -lm gsm/lib/libgsm.a $(LFLAGS) -o testgsm
++testgsm:    testgsm.o
++	$(CC) testgsm.o -lm -lgsm $(LFLAGS) -o testgsm
+ 
+ manpage:
+ 	nroff -man sfmike.1 | $(PAGER)
