@@ -1,0 +1,29 @@
+--- speak_freely-7.1/Makefile	Sat Sep 18 17:29:44 1999
++++ speak_freely-7.1.new/Makefile	Thu Jan 13 14:15:21 2000
+@@ -12,7 +12,7 @@
+ # Install program
+ INSTALL = /usr/bin/install
+ # Installation root directory
+-INSTDIR = /usr/local
++INSTDIR = /home/users/klakier/usr
+ # Binaries
+ INSTDIR_BIN = $(INSTDIR)/bin
+ # Manual pages
+@@ -38,7 +38,7 @@
+ #    functionality is working.	Please see the detailed description
+ #    of the available flags which follows these declarations.
+ #
+-CCFLAGS =  -DAUDIO_BLOCKING -DLINUX -DHALF_DUPLEX -DM_LITTLE_ENDIAN
++CCFLAGS =  -DAUDIO_BLOCKING -DLINUX -DM_LITTLE_ENDIAN
+ CC = gcc -O3 # for GNU's gcc compiler
+ LFLAGS = -lncurses -lm
+ #
+@@ -269,7 +269,7 @@
+ 
+ #   Compiler flags
+ 
+-CFLAGS = $(DEBUG) -Iadpcm -Ilpc -Igsm/inc -Imd5 -Iidea -Ilibdes -Iblowfish $(CARGS) $(DUPLEX) $(CCFLAGS) $(DOMAIN)
++CFLAGS = $(DEBUG) -I/usr/include/ncurses -Iadpcm -Ilpc -Igsm/inc -Imd5 -Iidea -Ilibdes -Iblowfish $(CARGS) $(DUPLEX) $(CCFLAGS) $(DOMAIN)
+ 
+ PROGRAMS = sfspeaker sfmike sflaunch sflwld sflwl sfecho sfreflect sfvod
+ 
