@@ -1,5 +1,6 @@
 Summary:	Speak Freely - network voice phone
 Summary(pl):	Speak Freely - internetowy telefon
+Summary(pt_BR):	Cliente para telefonia via Internet com suporte ao protocolo RTP
 Name:		speakfreely
 Version:	7.2
 Release:	2
@@ -42,6 +43,11 @@ UWAGA: Wersja binarne zosta³a skompilowana w full-duplex. Je¶li Twoja
 karta lub sterownik do niej nie obs³uguj± full-duplex, trzeba
 przekompilowaæ pakiet z w³±czon± opcj± half-duplex (opisane jest to w
 Makefile).
+
+%description -l pt_BR
+O Speak Freely permite que duas máquinas possam ser usadas para
+transmissão de voz sobre TCP/IP. Suporte compressão, criptografia e o
+protocolo RTP.
 
 %prep
 %setup -q -n speak_freely-%{version}
