@@ -59,7 +59,7 @@ install sfecho sflaunch sflwl sflwld sfmike sfreflect sfspeaker sfvod \
 	$RPM_BUILD_ROOT%{_bindir}
 install *.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/*
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
 	README*
 
 %clean
