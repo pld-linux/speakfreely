@@ -5,8 +5,6 @@ Version:	7.2
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Group(de):	Applikationen/Kommunikation
-Group(pl):	Aplikacje/Komunikacja
 Source0:	http://www.fourmilab.ch/speakfree/unix/speak_freely-%{version}.tar.gz
 Patch0:		speak_freely-Makefile.patch
 URL:		http://www.fourmilab.ch/speakfree/unix/
