@@ -9,8 +9,7 @@ Group(pl):	Aplikacje/Komunikacja
 Source:		http://www.fourmilab.ch/speakfree/unix/speak_freely-%{version}.tar.gz
 Patch:		speak_freely-Makefile.patch
 URL:		http://www.fourmilab.ch/speakfree/unix/
-BuildRoot:	/tmp/%{name}-%{version}-root
-
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Speak Freely is a application for a variety of Unix workstations that 
@@ -60,7 +59,6 @@ install *.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/*
 gzip -9fn README* INSTALL
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
