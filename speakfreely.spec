@@ -16,9 +16,9 @@ Patch2:		speak_freely-xspeakfree-pidfiles.patch
 URL:		http://www.fourmilab.ch/speakfree/unix/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define _xprefix /usr/X11R6
-%define _xbindir %{_xprefix}/bin
-%define _xdatadir %{_xprefix}/share
+%define		_xprefix	/usr/X11R6
+%define		_xbindir	%{_xprefix}/bin
+%define		_xdatadir	%{_xprefix}/share
 
 %description
 Speak Freely is a application for a variety of Unix workstations that
@@ -68,6 +68,9 @@ Requires:	%{name} = %{ver}-%{release}
 %description -n xspeakfree
 This is Tk-based GUI for Speak Freely.
 
+%description -n xspeakfree -l pl
+Ten pakiet zawiera oparty o Tk graficzny interfejs do Speak Freely.
+
 %prep
 %setup -q -n speak_freely-%{ver}
 %patch0 -p1
@@ -77,7 +80,7 @@ This is Tk-based GUI for Speak Freely.
 %build
 %{__make} \
 	INSTDIR=%{_prefix} \
-%ifarch ppc
+%ifarch ppc sparc sparc64 sparcv9
 	ENDIAN="BIG"
 %else
 	ENDIAN="LITTLE"
