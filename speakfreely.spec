@@ -5,6 +5,7 @@ Version:	7.2
 Release:	1
 License:	GPL
 Group:		Applications/Communications
+Group(de):	Applikationen/Kommunikation
 Group(pl):	Aplikacje/Komunikacja
 Source0:	http://www.fourmilab.ch/speakfree/unix/speak_freely-%{version}.tar.gz
 Patch0:		speak_freely-Makefile.patch
@@ -33,16 +34,16 @@ nie s± w stanie zapewniæ przesy³ania pe³nego sygna³u audio w czasie
 rzeczywistym. Mo¿liwe jest szyfrowanie transmisji za pomoc± jednego z
 algorytmów DES, Blowfish, IDEA. Za pomoc± Speak Freely mo¿na
 komunikowaæ siê równie¿ z u¿ytkownikami Speak Freely for Windows
-(http://www.fourmilab.ch/speakfree/windows/)
+(http://www.fourmilab.ch/speakfree/windows/).
 
 Program uruchamia siê poleceniem 'sflaunch' (lub mo¿na osobno
 uruchomiæ program odbiornika 'sfspeaker &' i program nadajnika 'sfmike
-<hostname>'
+<hostname>'.
 
 UWAGA: Wersja binarne zosta³a skompilowana w full-duplex. Je¶li Twoja
 karta lub sterownik do niej nie obs³uguj± full-duplex, trzeba
 przekompilowaæ pakiet z w³±czon± opcj± half-duplex (opisane jest to w
-Makefile)
+Makefile).
 
 %prep 
 %setup -q -n speak_freely-%{version}
@@ -59,8 +60,7 @@ install sfecho sflaunch sflwl sflwld sfmike sfreflect sfspeaker sfvod \
 	$RPM_BUILD_ROOT%{_bindir}
 install *.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	README*
+gzip -9nf README*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
