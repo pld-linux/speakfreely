@@ -43,7 +43,7 @@ karta lub sterownik do niej nie obs³uguj± full-duplex, trzeba
 przekompilowaæ pakiet z w³±czon± opcj± half-duplex (opisane jest to w
 Makefile).
 
-%prep 
+%prep
 %setup -q -n speak_freely-%{version}
 %patch -p1
 
