@@ -16,6 +16,7 @@ Patch2:		speak_freely-xspeakfree-pidfiles.patch
 Patch3:		speak_freely-system-libgsm.patch
 URL:		http://www.fourmilab.ch/speakfree/unix/
 BuildRequires:	libgsm-devel >= 1.0.2
+BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
