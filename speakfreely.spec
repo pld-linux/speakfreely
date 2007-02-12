@@ -1,8 +1,8 @@
 %define		ver 7.5
 %define		xspeakfreely_ver 0.8.1.b
 Summary:	Speak Freely - network voice phone
-Summary(pl.UTF-8):   Speak Freely - internetowy telefon
-Summary(pt_BR.UTF-8):   Cliente para telefonia via Internet com suporte ao protocolo RTP
+Summary(pl.UTF-8):	Speak Freely - internetowy telefon
+Summary(pt_BR.UTF-8):	Cliente para telefonia via Internet com suporte ao protocolo RTP
 Name:		speakfreely
 Version:	%{ver}
 Release:	1
@@ -59,7 +59,7 @@ protocolo RTP.
 
 %package -n xspeakfree
 Summary:	GUI to Speak Freely
-Summary(pl.UTF-8):   Graficzny interfejs użytkownika dla Speak Freely
+Summary(pl.UTF-8):	Graficzny interfejs użytkownika dla Speak Freely
 Version:	%{xspeakfreely_ver}
 Group:		Applications/Communications
 Requires:	%{name} = %{ver}-%{release}
