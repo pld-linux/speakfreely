@@ -1,8 +1,8 @@
 %define		ver 7.5
 %define		xspeakfreely_ver 0.8.1.b
 Summary:	Speak Freely - network voice phone
-Summary(pl):	Speak Freely - internetowy telefon
-Summary(pt_BR):	Cliente para telefonia via Internet com suporte ao protocolo RTP
+Summary(pl.UTF-8):   Speak Freely - internetowy telefon
+Summary(pt_BR.UTF-8):   Cliente para telefonia via Internet com suporte ao protocolo RTP
 Name:		speakfreely
 Version:	%{ver}
 Release:	1
@@ -32,34 +32,34 @@ for a given conversation. Speak Freely for Unix is compatible with
 Speak Freely for Windows, and users of the two programs can
 intercommunicate.
 
-%description -l pl
-Speak Freely pozwala rozmawiaæ przez sieæ z wieloma osobami na raz, w
-przypadku kart d¼wiêkowych full-duplex umo¿liwiaj±c jednoczesne
-odbieranie i nadawanie d¼wiêku. Program zna kilka rodzajów kompresji,
-co umo¿liwia jego zastosowania równie¿ w wolniejszych sieciach, które
-nie s± w stanie zapewniæ przesy³ania pe³nego sygna³u audio w czasie
-rzeczywistym. Mo¿liwe jest szyfrowanie transmisji za pomoc± jednego z
-algorytmów DES, Blowfish, IDEA. Za pomoc± Speak Freely mo¿na
-komunikowaæ siê równie¿ z u¿ytkownikami Speak Freely for Windows
+%description -l pl.UTF-8
+Speak Freely pozwala rozmawiaÄ‡ przez sieÄ‡ z wieloma osobami na raz, w
+przypadku kart dÅºwiÄ™kowych full-duplex umoÅ¼liwiajÄ…c jednoczesne
+odbieranie i nadawanie dÅºwiÄ™ku. Program zna kilka rodzajÃ³w kompresji,
+co umoÅ¼liwia jego zastosowania rÃ³wnieÅ¼ w wolniejszych sieciach, ktÃ³re
+nie sÄ… w stanie zapewniÄ‡ przesyÅ‚ania peÅ‚nego sygnaÅ‚u audio w czasie
+rzeczywistym. MoÅ¼liwe jest szyfrowanie transmisji za pomocÄ… jednego z
+algorytmÃ³w DES, Blowfish, IDEA. Za pomocÄ… Speak Freely moÅ¼na
+komunikowaÄ‡ siÄ™ rÃ³wnieÅ¼ z uÅ¼ytkownikami Speak Freely for Windows
 (http://www.fourmilab.ch/speakfree/windows/).
 
-Program uruchamia siê poleceniem 'sflaunch' (lub mo¿na osobno
-uruchomiæ program odbiornika 'sfspeaker &' i program nadajnika 'sfmike
+Program uruchamia siÄ™ poleceniem 'sflaunch' (lub moÅ¼na osobno
+uruchomiÄ‡ program odbiornika 'sfspeaker &' i program nadajnika 'sfmike
 <hostname>'.
 
-UWAGA: Wersja binarne zosta³a skompilowana w full-duplex. Je¶li Twoja
-karta lub sterownik do niej nie obs³uguj± full-duplex, trzeba
-przekompilowaæ pakiet z w³±czon± opcj± half-duplex (opisane jest to w
+UWAGA: Wersja binarne zostaÅ‚a skompilowana w full-duplex. JeÅ›li Twoja
+karta lub sterownik do niej nie obsÅ‚ugujÄ… full-duplex, trzeba
+przekompilowaÄ‡ pakiet z wÅ‚Ä…czonÄ… opcjÄ… half-duplex (opisane jest to w
 Makefile).
 
-%description -l pt_BR
-O Speak Freely permite que duas máquinas possam ser usadas para
-transmissão de voz sobre TCP/IP. Suporte compressão, criptografia e o
+%description -l pt_BR.UTF-8
+O Speak Freely permite que duas mÃ¡quinas possam ser usadas para
+transmissÃ£o de voz sobre TCP/IP. Suporte compressÃ£o, criptografia e o
 protocolo RTP.
 
 %package -n xspeakfree
 Summary:	GUI to Speak Freely
-Summary(pl):	Graficzny interfejs u¿ytkownika dla Speak Freely
+Summary(pl.UTF-8):   Graficzny interfejs uÅ¼ytkownika dla Speak Freely
 Version:	%{xspeakfreely_ver}
 Group:		Applications/Communications
 Requires:	%{name} = %{ver}-%{release}
@@ -67,7 +67,7 @@ Requires:	%{name} = %{ver}-%{release}
 %description -n xspeakfree
 This is Tk-based GUI for Speak Freely.
 
-%description -n xspeakfree -l pl
+%description -n xspeakfree -l pl.UTF-8
 Ten pakiet zawiera oparty o Tk graficzny interfejs do Speak Freely.
 
 %prep
